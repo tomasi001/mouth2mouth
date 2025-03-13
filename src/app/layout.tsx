@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
+import { SplashScreenWrapper } from "@/components/SplashScreenWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${sailors.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Navigation />
-        <main className="flex-1">{children}</main>
+        <SplashScreenWrapper>
+          <Navigation />
+          <main className="flex-1">{children}</main>
+        </SplashScreenWrapper>
       </body>
     </html>
   );

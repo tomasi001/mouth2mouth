@@ -45,7 +45,7 @@ export default function AboutPage() {
           {/* Mobile Header */}
           <div>
             <h1
-              className="text-[40px] uppercase font-sailors tracking-wider"
+              className="text-[40px] text-[#bac8c4] uppercase font-sailors tracking-wider"
               style={{ fontFamily: "var(--font-sailors)" }}
             >
               ABOUT US.
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
           {/* Mobile Description */}
           <div className="backdrop-blur-md bg-white/30 p-8">
-            <p className="font-sailors text-[18px] leading-relaxed">
+            <p className="font-sailors text-[18px] leading-relaxed text-[#bac8c4]">
               MOUTH2MOUTH is a music and design collective founded in 2017. Our
               aim is to create accessible spaces for artists and party-goers to
               experience unique events at secret locations around the city. We

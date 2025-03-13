@@ -23,13 +23,13 @@ export default function Home() {
           />
         </div>
         <h1
-          className="text-[32px] text-black uppercase font-sailors text-center"
+          className="text-[32px] text-[#bac8c4] uppercase font-sailors text-center"
           style={{ fontFamily: "var(--font-sailors)" }}
         >
           Mouth2Mouth
         </h1>
         <p
-          className="text-[16px] text-black font-sailors text-center mt-1"
+          className="text-[16px] text-[#bac8c4] font-sailors text-center mt-1"
           style={{ fontFamily: "var(--font-sailors)" }}
         >
           Cape Town, South Africa, Est. 2017

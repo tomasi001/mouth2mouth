@@ -135,10 +135,10 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-20px);
   }
 }
 
 .animate-gentle-float {
-  animation: gentle-float 5s ease-in-out infinite;
+  animation: gentle-float 3s ease-in-out infinite;
 }

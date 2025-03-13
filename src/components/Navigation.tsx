@@ -86,7 +86,7 @@ export function Navigation() {
           <Dialog open={isMailingListOpen} onOpenChange={setIsMailingListOpen}>
             <DialogTrigger asChild>
               <button
-                className="px-4 py-2 rounded-sm border-2 border-[#bac8c4] bg-transparent text-[#bac8c4] uppercase font-medium hover:bg-[#bac8c4]/5 transition-all text-[18px]"
+                className="px-4 py-2 rounded-sm border-2 border-white bg-transparent text-white uppercase font-medium hover:bg-[#bac8c4]/5 transition-all text-[18px]"
                 style={{ fontFamily: "var(--font-sailors)" }}
               >
                 Mailing List Sign Up
