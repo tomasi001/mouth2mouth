@@ -100,7 +100,7 @@ export default function PreviousWorkPage() {
       {/* Desktop Title - hidden on mobile */}
       <div className="hidden md:block absolute top-20 left-20 z-20">
         <h1
-          className="text-[60px] uppercase text-white font-sailors tracking-wider"
+          className="text-[60px] uppercase text-[#bac8c4] font-sailors tracking-wider"
           style={{ fontFamily: "var(--font-sailors)" }}
         >
           PREVIOUS WORKS
@@ -110,7 +110,7 @@ export default function PreviousWorkPage() {
       {/* Mobile Title - visible only on mobile */}
       <div className="md:hidden absolute top-10 left-6 z-20">
         <h1
-          className="text-[32px] uppercase text-white font-sailors tracking-wider"
+          className="text-[32px] uppercase text-[#bac8c4] font-sailors tracking-wider"
           style={{ fontFamily: "var(--font-sailors)" }}
         >
           PREVIOUS WORKS
@@ -120,10 +120,10 @@ export default function PreviousWorkPage() {
       {/* Mobile Image caption/description - visible only on mobile, positioned above carousel */}
       <div className="md:hidden absolute top-28 left-0 right-0 px-6 z-20">
         <div className="bg-black/60 p-4 rounded">
-          <h3 className="text-white text-xl font-bold mb-2 font-sailors">
+          <h3 className="text-[#bac8c4] text-xl font-bold mb-2 font-sailors">
             {eventDescriptions[currentIndex].title}
           </h3>
-          <p className="text-white/90 text-base">
+          <p className="text-[#bac8c4]/90 text-base">
             {eventDescriptions[currentIndex].description}
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function PreviousWorkPage() {
 
       {/* Desktop Navigation arrows - hidden on mobile */}
       <button
-        className="hidden md:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
+        className="hidden md:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-[#bac8c4] p-4 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToPrevious}
         aria-label="Previous image"
       >
@@ -182,7 +182,7 @@ export default function PreviousWorkPage() {
       </button>
 
       <button
-        className="hidden md:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
+        className="hidden md:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-[#bac8c4] p-4 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToNext}
         aria-label="Next image"
       >
@@ -203,7 +203,7 @@ export default function PreviousWorkPage() {
 
       {/* Mobile Navigation arrows - visible only on mobile */}
       <button
-        className="md:hidden absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-20 focus:outline-none transition-colors"
+        className="md:hidden absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-[#bac8c4] p-2 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToPrevious}
         aria-label="Previous image"
       >
@@ -223,7 +223,7 @@ export default function PreviousWorkPage() {
       </button>
 
       <button
-        className="md:hidden absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-20 focus:outline-none transition-colors"
+        className="md:hidden absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-[#bac8c4] p-2 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToNext}
         aria-label="Next image"
       >
@@ -243,22 +243,22 @@ export default function PreviousWorkPage() {
       </button>
 
       {/* Desktop Image counter - hidden on mobile */}
-      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full z-20 font-sailors text-lg">
+      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/50 text-[#bac8c4] px-6 py-3 rounded-full z-20 font-sailors text-lg">
         {currentIndex + 1} / {eventImages.length}
       </div>
 
       {/* Mobile Image counter - visible only on mobile, positioned above navigation bar */}
-      <div className="md:hidden absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full z-20 font-sailors text-base">
+      <div className="md:hidden absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-black/50 text-[#bac8c4] px-4 py-2 rounded-full z-20 font-sailors text-base">
         {currentIndex + 1} / {eventImages.length}
       </div>
 
       {/* Desktop Image caption/description - hidden on mobile */}
       <div className="hidden md:block absolute bottom-24 left-6 z-20 max-w-lg">
         <div className="bg-black/60 p-5 rounded">
-          <h3 className="text-white text-2xl font-bold mb-2 font-sailors">
+          <h3 className="text-[#bac8c4] text-2xl font-bold mb-2 font-sailors">
             {eventDescriptions[currentIndex].title}
           </h3>
-          <p className="text-white/90 text-lg">
+          <p className="text-[#bac8c4]/90 text-lg">
             {eventDescriptions[currentIndex].description}
           </p>
         </div>

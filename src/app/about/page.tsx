@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background image */}
-      <div className="bg-[url('/backgrounds/about-us.png')] bg-cover bg-center h-screen absolute inset-0 z-0" />
+      <div className="bg-[url('/images/fran/so_bright_it_hurts.png')] bg-cover bg-center h-screen absolute inset-0 z-0" />
 
       {/* Content overlay */}
       <div className="relative z-10 container mx-auto px-6 pt-16">
@@ -13,7 +13,7 @@ export default function AboutPage() {
           {/* Left side - "ABOUT US." */}
           <div>
             <h1
-              className="text-[60px] uppercase font-sailors tracking-wider"
+              className="text-[60px] text-[#bac8c4] uppercase font-sailors tracking-wider"
               style={{ fontFamily: "var(--font-sailors)" }}
             >
               ABOUT US.

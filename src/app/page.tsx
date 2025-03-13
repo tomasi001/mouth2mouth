@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background image */}
-      <div className="bg-[url('/backgrounds/landing.png')] bg-cover bg-center h-screen absolute inset-0 z-0" />
+      <div className="bg-[url('/images/fran/i_fell_asleep_against_the_window_of_the_cornershop.png')] bg-cover lg:bg-contain bg-center h-screen absolute inset-0 z-0" />
 
       {/* Layered overlay image */}
       <div className="hidden lg:block bg-[url('/backgrounds/landing_layer_2.png')] bg-cover bg-center h-screen absolute inset-0 z-10" />

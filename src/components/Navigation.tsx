@@ -69,14 +69,14 @@ export function Navigation() {
           <div className="flex flex-col items-end">
             <Link
               href="/previous-work"
-              className="text-black uppercase font-medium hover:underline transition-all text-[22px] font-sailors"
+              className="text-[#bac8c4] uppercase font-medium hover:underline hover:text-[#bac8c4]/80 transition-all text-[22px] font-sailors"
               style={{ fontFamily: "var(--font-sailors)" }}
             >
               Previous Works
             </Link>
             <Link
               href="/about"
-              className="text-black uppercase font-medium hover:underline transition-all text-[22px] font-sailors"
+              className="text-[#bac8c4] uppercase font-medium hover:underline hover:text-[#bac8c4]/80 transition-all text-[22px] font-sailors"
               style={{ fontFamily: "var(--font-sailors)" }}
             >
               About Us
@@ -86,7 +86,7 @@ export function Navigation() {
           <Dialog open={isMailingListOpen} onOpenChange={setIsMailingListOpen}>
             <DialogTrigger asChild>
               <button
-                className="px-4 py-2 rounded-sm border-2 border-black bg-transparent text-black uppercase font-medium hover:bg-black/5 transition-all text-[18px]"
+                className="px-4 py-2 rounded-sm border-2 border-[#bac8c4] bg-transparent text-[#bac8c4] uppercase font-medium hover:bg-[#bac8c4]/5 transition-all text-[18px]"
                 style={{ fontFamily: "var(--font-sailors)" }}
               >
                 Mailing List Sign Up
@@ -94,15 +94,20 @@ export function Navigation() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>Sign up for our mailing list</DialogTitle>
-                <DialogDescription>
+                <DialogTitle className="text-[#bac8c4]">
+                  Sign up for our mailing list
+                </DialogTitle>
+                <DialogDescription className="text-[#bac8c4]/80">
                   Stay updated with our latest news and announcements.
                 </DialogDescription>
               </DialogHeader>
               {!isSubmitted ? (
                 <form onSubmit={handleSubmit} className="space-y-4 mt-4">
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-medium text-[#bac8c4]"
+                    >
                       Email address
                     </label>
                     <Input
@@ -112,22 +117,26 @@ export function Navigation() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
+                      className="text-[#bac8c4]"
                     />
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button
+                    type="submit"
+                    className="w-full text-[#bac8c4] border-[#bac8c4]"
+                  >
                     Subscribe
                   </Button>
                 </form>
               ) : (
                 <div className="py-6 text-center">
-                  <p className="text-green-600 font-medium">
+                  <p className="text-[#bac8c4] font-medium">
                     Thank you for subscribing!
                   </p>
-                  <p className="mt-2 text-sm text-gray-500">
+                  <p className="mt-2 text-sm text-[#bac8c4]/80">
                     We&apos;ll send updates to {email}
                   </p>
                   <Button
-                    className="mt-4"
+                    className="mt-4 text-[#bac8c4] border-[#bac8c4]"
                     variant="outline"
                     onClick={() => {
                       setIsSubmitted(false);
@@ -149,7 +158,7 @@ export function Navigation() {
         <div className="hidden md:flex absolute top-5 left-5 z-20">
           <Link
             href="/"
-            className="text-white hover:text-white/80 transition-colors flex items-center gap-2 group"
+            className="text-[#bac8c4] hover:text-[#bac8c4]/80 transition-colors flex items-center gap-2 group"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
