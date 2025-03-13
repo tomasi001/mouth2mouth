@@ -96,18 +96,37 @@ export default function PreviousWorkPage() {
   };
 
   return (
-    <div className="relative h-screen w-full bg-black">
-      {/* Dark overlay for better text readability */}
-      {/* <div className="absolute inset-0 bg-black bg-opacity-40 z-[1]"></div> */}
-
-      {/* Title */}
-      <div className="absolute top-20 left-20 z-20">
+    <div className="relative min-h-screen w-full bg-black">
+      {/* Desktop Title - hidden on mobile */}
+      <div className="hidden md:block absolute top-20 left-20 z-20">
         <h1
           className="text-[60px] uppercase text-white font-sailors tracking-wider"
           style={{ fontFamily: "var(--font-sailors)" }}
         >
           PREVIOUS WORKS
         </h1>
+      </div>
+
+      {/* Mobile Title - visible only on mobile */}
+      <div className="md:hidden absolute top-10 left-6 z-20">
+        <h1
+          className="text-[32px] uppercase text-white font-sailors tracking-wider"
+          style={{ fontFamily: "var(--font-sailors)" }}
+        >
+          PREVIOUS WORKS
+        </h1>
+      </div>
+
+      {/* Mobile Image caption/description - visible only on mobile, positioned above carousel */}
+      <div className="md:hidden absolute top-28 left-0 right-0 px-6 z-20">
+        <div className="bg-black/60 p-4 rounded">
+          <h3 className="text-white text-xl font-bold mb-2 font-sailors">
+            {eventDescriptions[currentIndex].title}
+          </h3>
+          <p className="text-white/90 text-base">
+            {eventDescriptions[currentIndex].description}
+          </p>
+        </div>
       </div>
 
       {/* Fixed height container for carousel */}
@@ -141,9 +160,9 @@ export default function PreviousWorkPage() {
         </div>
       </div>
 
-      {/* Custom Navigation arrows (chevrons) */}
+      {/* Desktop Navigation arrows - hidden on mobile */}
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
+        className="hidden md:block absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToPrevious}
         aria-label="Previous image"
       >
@@ -163,7 +182,7 @@ export default function PreviousWorkPage() {
       </button>
 
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
+        className="hidden md:block absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-4 rounded-full z-20 focus:outline-none transition-colors"
         onClick={goToNext}
         aria-label="Next image"
       >
@@ -182,13 +201,59 @@ export default function PreviousWorkPage() {
         </svg>
       </button>
 
-      {/* Image counter */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full z-20 font-sailors text-lg">
+      {/* Mobile Navigation arrows - visible only on mobile */}
+      <button
+        className="md:hidden absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-20 focus:outline-none transition-colors"
+        onClick={goToPrevious}
+        aria-label="Previous image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button
+        className="md:hidden absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full z-20 focus:outline-none transition-colors"
+        onClick={goToNext}
+        aria-label="Next image"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      {/* Desktop Image counter - hidden on mobile */}
+      <div className="hidden md:block absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-6 py-3 rounded-full z-20 font-sailors text-lg">
         {currentIndex + 1} / {eventImages.length}
       </div>
 
-      {/* Image caption/description */}
-      <div className="absolute bottom-24 left-6 z-20 max-w-lg">
+      {/* Mobile Image counter - visible only on mobile, positioned above navigation bar */}
+      <div className="md:hidden absolute bottom-24 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full z-20 font-sailors text-base">
+        {currentIndex + 1} / {eventImages.length}
+      </div>
+
+      {/* Desktop Image caption/description - hidden on mobile */}
+      <div className="hidden md:block absolute bottom-24 left-6 z-20 max-w-lg">
         <div className="bg-black/60 p-5 rounded">
           <h3 className="text-white text-2xl font-bold mb-2 font-sailors">
             {eventDescriptions[currentIndex].title}
