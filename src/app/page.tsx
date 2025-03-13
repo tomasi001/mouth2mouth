@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -11,11 +13,13 @@ export default function Home() {
 
       {/* Mobile Logo and Text - ONLY visible on mobile */}
       <div className="md:hidden absolute top-10 left-0 right-0 flex flex-col items-center z-20">
-        <div className="w-80 h-80 relative">
-          <img
+        <div className="w-80 h-80 relative animate-gentle-float">
+          <Image
             src="/images/logo/Latest-Logo.png"
             alt="Mouth2Mouth Logo"
-            className="w-full h-full object-contain"
+            fill
+            className="object-contain"
+            priority
           />
         </div>
         <h1
