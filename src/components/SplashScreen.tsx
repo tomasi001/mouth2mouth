@@ -13,7 +13,10 @@ const MAX_WIDTH = 1920; // Reduced from 3840 to a more reasonable size
 const preloadImage = (src: string): Promise<void> => {
   return new Promise((resolve, reject) => {
     const img = new window.Image();
-    img.src = `/_next/image?url=${encodeURIComponent(src)}&w=${MAX_WIDTH}&q=75`; // Reduced quality for preloading
+    // Use lower quality for preload
+    img.src = `/_next/image?url=${encodeURIComponent(src)}&w=${MAX_WIDTH}&q=50`;
+    img.sizes = "(max-width: 768px) 100vw, 90vw";
+    img.loading = "eager"; // Force eager loading
     img.onload = () => resolve();
     img.onerror = reject;
   });
@@ -47,7 +50,7 @@ export function SplashScreen({ onLoadComplete }: Readonly<SplashScreenProps>) {
       await Promise.all(chunk.map((src) => preloadImage(src)));
       loadedImages += chunk.length;
 
-      if (loadedImages >= totalImages) {
+      if (loadedImages >= 3) {
         setAnimationStage(1);
         setTimeout(() => {
           setAnimationStage(2);
@@ -105,6 +108,7 @@ export function SplashScreen({ onLoadComplete }: Readonly<SplashScreenProps>) {
           alt="Mouth2Mouth Logo"
           fill
           className="object-contain"
+          sizes="(max-width: 768px) 80vw, 40vw"
           priority
         />
       </div>
