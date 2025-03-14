@@ -1,13 +1,22 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function AboutPage() {
-  // Team members data
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Handle image load complete
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Background image with blur-up loading */}
-      <div className="absolute inset-0 z-0">
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+      {/* Background image with fade-in effect */}
+      <div
+        className="absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out"
+        style={{ opacity: imageLoaded ? 1 : 0 }}
+      >
         {/* Low quality placeholder that loads immediately */}
 
         {/* High quality image that loads after */}
@@ -20,12 +29,16 @@ export default function AboutPage() {
           className="object-cover"
           priority
           placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkLzYvLy02Ky8vLys2PTo6Njs1Ly9BR0dHUFVQVDA+WFFQR0RHUEj/2wBDAR" // Keep existing blur data URL
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkLzYvLy02Ky8vLys2PTo6Njs1Ly9BR0dHUFVQVDA+WFFQR0RHUEj/2wBDAR"
+          onLoadingComplete={handleImageLoad}
         />
       </div>
 
-      {/* Content overlay */}
-      <div className="relative z-10 container mx-auto px-6 pt-16">
+      {/* Content overlay - fade in after image loads */}
+      <div
+        className="relative z-10 container mx-auto px-6 pt-16 transition-opacity duration-1000 ease-in-out delay-300"
+        style={{ opacity: imageLoaded ? 1 : 0 }}
+      >
         {/* Desktop Layout - hidden on mobile */}
         <div className="hidden md:flex flex-row gap-16 items-start">
           {/* Left side - "ABOUT US." */}
@@ -39,7 +52,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right side - Description */}
-          <div className="backdrop-blur-md bg-white/30 p-8">
+          <div className="backdrop-blur-sm bg-white/30 p-8">
             <p className="font-sailors text-[25px] space-y-4">
               MOUTH2MOUTH is a music and design collective founded in 2017.
               <br />
