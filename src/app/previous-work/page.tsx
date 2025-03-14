@@ -151,6 +151,8 @@ export default function PreviousWorkPage() {
                       className="object-contain"
                       sizes="(max-width: 768px) 100vw, 90vw"
                       priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      quality={75}
                     />
                   </div>
                 </CarouselItem>

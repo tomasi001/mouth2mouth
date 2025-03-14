@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Image, { ImageLoader } from "next/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface SplashScreenProps {
@@ -10,17 +10,10 @@ interface SplashScreenProps {
 
 const MAX_WIDTH = 1920; // Reduced from 3840 to a more reasonable size
 
-const imageLoader: ImageLoader = ({ src, width }) => {
-  // Use a more conservative width
-  const optimizedWidth = Math.min(width || MAX_WIDTH, MAX_WIDTH);
-  return `/_next/image?url=${src}&w=${optimizedWidth}&q=100`;
-};
-
 const preloadImage = (src: string): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const img: HTMLImageElement = document.createElement("img");
-    // Use a fixed width for preloading to avoid size issues
-    img.src = imageLoader({ src, width: MAX_WIDTH });
+    const img = new window.Image();
+    img.src = `/_next/image?url=${encodeURIComponent(src)}&w=${MAX_WIDTH}&q=75`; // Reduced quality for preloading
     img.onload = () => resolve();
     img.onerror = reject;
   });
@@ -48,13 +41,13 @@ export function SplashScreen({ onLoadComplete }: Readonly<SplashScreenProps>) {
     const totalImages = criticalImages.length;
     let loadedImages = 0;
 
-    const handleImageLoad = () => {
-      loadedImages++;
-      console.log(`Loaded ${loadedImages}/${totalImages} images`); // For debugging
+    // Preload images in chunks to avoid overwhelming the browser
+    const preloadChunk = async (startIndex: number, chunkSize: number) => {
+      const chunk = criticalImages.slice(startIndex, startIndex + chunkSize);
+      await Promise.all(chunk.map((src) => preloadImage(src)));
+      loadedImages += chunk.length;
 
-      if (loadedImages === totalImages) {
-        // Changed from === 1 to === totalImages
-        // Start animations only after ALL images are loaded
+      if (loadedImages >= totalImages) {
         setAnimationStage(1);
         setTimeout(() => {
           setAnimationStage(2);
@@ -63,15 +56,14 @@ export function SplashScreen({ onLoadComplete }: Readonly<SplashScreenProps>) {
             setTimeout(handleFadeOut, 0);
           }, 3000);
         }, 2000);
+      } else if (startIndex + chunkSize < totalImages) {
+        // Load next chunk
+        preloadChunk(startIndex + chunkSize, chunkSize);
       }
     };
 
-    Promise.all(
-      criticalImages.map((src) => preloadImage(src).then(handleImageLoad))
-    ).catch((error) => {
-      console.error("Error preloading images:", error);
-      setAnimationStage(1);
-    });
+    // Start preloading in chunks of 3
+    preloadChunk(0, 3);
   }, []);
 
   const handleFadeOut = () => {
