@@ -1,10 +1,43 @@
+"use client";
+import Image from "next/image";
+
 export default function AboutPage() {
   // Team members data
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Background image */}
-      <div className="bg-[url('/images/fran/so_bright_it_hurts.png')] bg-cover bg-center h-screen absolute inset-0 z-0" />
+      {/* Background image with blur-up loading */}
+      <div className="absolute inset-0 z-0">
+        {/* Low quality placeholder that loads immediately */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/fran/so_bright_it_hurts.png"
+            alt="Background placeholder"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            quality={10} // Very low quality for quick loading
+            priority // Load this first
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkLzYvLy02Ky8vLys2PTo6Njs1Ly9BR0dHUFVQVDA+WFFQR0RHUEj/2wBDAR" // Add a very low quality blur placeholder
+          />
+        </div>
+
+        {/* High quality image that loads after */}
+        <Image
+          src="/images/fran/so_bright_it_hurts.png"
+          alt="Background"
+          quality={100}
+          fill
+          sizes="100vw"
+          className="object-cover transition-opacity duration-1000"
+          onLoadingComplete={(image) => {
+            // Fade in the high quality image
+            image.classList.remove("opacity-0");
+          }}
+          loading="lazy" // Let the placeholder load first
+        />
+      </div>
 
       {/* Content overlay */}
       <div className="relative z-10 container mx-auto px-6 pt-16">
@@ -54,7 +87,7 @@ export default function AboutPage() {
 
           {/* Mobile Description */}
           <div className="backdrop-blur-md bg-white/30 p-8">
-            <p className="font-sailors text-[18px] leading-relaxed text-[#bac8c4]">
+            <p className="font-sailors text-[18px] leading-relaxed">
               MOUTH2MOUTH is a music and design collective founded in 2017. Our
               aim is to create accessible spaces for artists and party-goers to
               experience unique events at secret locations around the city. We

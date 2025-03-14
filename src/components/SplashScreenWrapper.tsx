@@ -11,26 +11,15 @@ export function SplashScreenWrapper({
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="relative">
+    <>
+      <div className="relative">{children}</div>
       <div
-        style={{
-          opacity: isLoading ? 0 : 1,
-          transition: "opacity 1s ease-in",
-          visibility: isLoading ? "hidden" : "visible",
-        }}
-      >
-        {children}
-      </div>
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 50,
-          visibility: isLoading ? "visible" : "hidden",
-        }}
+        className={`fixed inset-0 z-50 bg-black transition-opacity duration-1000 ease-out ${
+          isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
       >
         <SplashScreen onLoadComplete={() => setIsLoading(false)} />
       </div>
-    </div>
+    </>
   );
 }
