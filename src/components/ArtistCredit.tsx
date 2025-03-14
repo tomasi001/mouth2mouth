@@ -20,7 +20,7 @@ export function ArtistCredit() {
             rel="noopener noreferrer"
             className="text-[20px] text-[#bac8c4] bg-white/10 backdrop-blur-lg shadow-xl transition-opacity duration-200 font-sailors bg-green-500 cursor-pointer px-2"
           >
-            art by @frangry
+            art by frangry
           </Link>
         </div>
       </footer>
@@ -34,7 +34,7 @@ export function ArtistCredit() {
             rel="noopener noreferrer"
             className="text-[18px] text-[#bac8c4] bg-white/10 backdrop-blur-lg shadow-xl transition-opacity duration-200 font-sailors bg-green-500 cursor-pointer px-2"
           >
-            art by @frangry
+            art by frangry
           </Link>
         </div>
       </footer>
