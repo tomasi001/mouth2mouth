@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { SplashScreenWrapper } from "@/components/SplashScreenWrapper";
+import { ArtistCredit } from "@/components/ArtistCredit";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <SplashScreenWrapper>
           <Navigation />
           <main className="flex-1">{children}</main>
+          <ArtistCredit />
         </SplashScreenWrapper>
       </body>
     </html>
